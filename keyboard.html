@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="creations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--import Poppins font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Custom Mechanical Keyboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">Custom Mechanical Keyboard</h1>
+            <p class="hero-subtitle">
+                An 80% TKL mechanical keyboard designed from scratch with custom PCB, QMK firmware, and 3D-printed case
+            </p>
+            <div class="tech-stack">
+                <span class="tech-badge">KiCAD</span>
+                <span class="tech-badge">QMK Firmware</span>
+                <span class="tech-badge">Fusion 360</span>
+                <span class="tech-badge">C Programming</span>
+                <span class="tech-badge">3D Printing</span>
+                <span class="tech-badge">PCB Design</span>
+                <span class="tech-badge">Soldering</span>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="content-text">
+                This project began during my sophomore summer when I discovered the custom keyboard community. Inspired by creators like Joe Scotto, I embarked on a journey to design and build a fully functional mechanical keyboard from the ground up. What started as curiosity evolved into a comprehensive engineering project involving PCB design, firmware programming, and mechanical engineering.
+            </p>
+            <p class="content-text">
+                The keyboard features an 88-key matrix architecture, utilizing a row-column scanning system that requires only 23 GPIO pins instead of 88 individual connections. This efficient design incorporates diodes to prevent ghosting and enable N-key rollover, ensuring every keypress is accurately registered even during rapid typing or gaming.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Design & Engineering Process</h2>
+            <p class="content-text">
+                The PCB was designed in KiCAD after extensive research into keyboard matrix theory. I started with a simple 3×3 numberpad prototype to understand how diodes and the scanning matrix work together. This foundation allowed me to scale up confidently to the full 80% layout.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/kicadsch.png" alt="KiCAD Schematic">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/pcblayout.png" alt="PCB Layout">
+                </div>
+            </div>
+            <p class="content-text">
+                After finalizing the design, I ordered five PCBs from JLCPCB. The manufacturing process taught me valuable lessons about design validation—I discovered two critical mistakes in my initial design where column traces were accidentally routed to ground pins. This required creative problem-solving: removing header pins and manually wiring the connections to available GPIO pins.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Firmware Development</h2>
+            <p class="content-text">
+                Programming the RP2040 Pro Micro proved challenging but rewarding. Initially planning to use KMK firmware, I pivoted to QMK when I discovered my microcontroller lacked the necessary CircuitPython support. QMK's more mature ecosystem provided extensive features including VIA support for real-time key remapping.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/qmk.png" alt="QMK Configuration">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/VIA.png" alt="VIA Interface">
+                </div>
+            </div>
+            <p class="content-text">
+                The debugging process was intensive, involving weeks of testing pin assignments and matrix configurations. The breakthrough came when I decided to proceed with soldering despite uncertainties—shorting row and column pins confirmed the matrix logic was sound, validating all the firmware work.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Assembly & Fabrication</h2>
+            <p class="content-text">
+                Hand-soldering 88 diodes and switches was meticulous work requiring patience and precision. Each 1N4148 diode needed proper orientation to ensure the matrix functioned correctly. After soldering, I added PCB-mounted stabilizers for larger keys and installed Gateron switches with Nuphy Gem keycaps.
+            </p>
+            <div class="image-grid-three">
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/cutting.png" alt="Component Preparation">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/soldering.png" alt="Soldering Process">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Keyboard/switch.png" alt="Switch Installation">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Case Design</h2>
+            <p class="content-text">
+                The case design went through numerous iterations in Fusion 360. I used Keyboard Layout Editor and SwillKB for initial layouts before creating a custom four-part snap-fit design. The case features standoffs for PCB mounting, a 6° typing angle for ergonomics, a custom USB-C cutout, and an embossed title plate.
+            </p>
+            <div class="image-grid">
+                <div class="image-container" style="width:70%; margin: 0 auto;">
+                    <img src="images/projects/Keyboard/fusioncase.png" alt="Case CAD Model">
+                </div>
+            </div>
+            <p class="content-text">
+                Printing in matte dark blue PLA, I achieved a professional finish that complements the Gem keycaps. The snap-fit design eliminates the need for screws while maintaining structural integrity and ease of assembly.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Final Result</h2>
+            <img src="images/projects/Keyboard/final.png" alt="Completed Keyboard" class="full-width-image"  style="width: 80%; margin-left: 10%;">
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Key Learnings</h2>
+            <div class="highlights-box">
+                <ul class="highlights-list">
+                    <li>Mastered PCB schematic design and layout using KiCAD's ERC and DRC tools</li>
+                    <li>Learned keyboard matrix theory: row-column scanning, diode implementation, and ghosting prevention</li>
+                    <li>Developed proficiency in QMK firmware configuration and compilation</li>
+                    <li>Gained hands-on experience with surface-mount soldering techniques</li>
+                    <li>Improved CAD modeling skills with complex assemblies and tolerance management</li>
+                    <li>Understood microcontroller GPIO requirements and power management</li>
+                    <li>Practiced iterative design methodology through multiple prototype cycles</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Future Enhancements</h2>
+            <p class="content-text">
+                This project opened doors to numerous possibilities for improvement. Future iterations could incorporate wireless connectivity using ZMK firmware with a different microcontroller, RGB underglow for aesthetics and functionality, rotary encoders for volume control, and even an OLED display for layer indication and system stats.
+            </p>
+        </section>
+
+        <div class="button-container">
+            <a href="https://github.com/mbzgr8/keyboard-firmware" target="_blank" class="github-link">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+            <a href="projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+        </div>
+    </div>
+</body>
+</html>

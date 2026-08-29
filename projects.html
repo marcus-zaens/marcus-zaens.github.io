@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--import Poppins font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--import Inter font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c9fe849f03.js" crossorigin="anonymous"></script> <!-- Font Awesome icons -->
+    <title>Projects</title>
+</head>
+
+<body>
+    <section>
+        <div class="navbar">
+            <ul class="sections">
+                <li class="Home"><a href="index.html"><i class="fas fa-house"></i><strong> Home</strong></a></li>
+                <li class="Projects"><a href="projects.html"><i class="fas fa-folder"></i><strong> Projects</strong></a></li>
+                <li class="Resume"><a href="about.html"><i class="fas fa-file-alt"></i><strong> Resume</strong></a></li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div style="text-align: center;">
+            <p class="title" style="font-size: 50px; margin-top: 5%;"><strong>Projects</strong></p>
+
+            <p class="Welcome">
+                A showcase of my most significant work in hardware engineering, machine learning, and software development. Each project represents hands-on learning, problem-solving, and a passion for innovation as a result of extensive iteration, development, and smaller-scale projects and ideas.
+            </p>
+        </div>
+        <hr class=divider>
+        </hr>
+        <div class="project">
+            <div class="project-text">
+                <h1>Mechanical Keyboard</h1>
+                <ul>
+                    <li>Developed an 80% mechanical keyboard with KiCad and a custom case using Fusion 360 and Bambu
+                        Studio.</li>
+                    <li>Programmed an RP2040 Pro Micro to support QMK firmware and VIA compatibility for custom keymaps.
+                    </li>
+                    <li>Learned how to solder, utilize a keyboard matrix, and design a functional PCB.</li>
+                </ul>
+                <a href="keyboard.html" class="project-button">
+                    View Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-media">
+                <video autoplay muted loop>
+                    <source src="images/projects/Keyboard/Layers_POV.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
+        <div class="project">
+            <div class="project-text">
+                <h1>Detecting Myopia with LR and CNN Models</h1>
+                <ul>
+                    <li>Developed a logistic regression model and visualized an 87.6% accuracy with a Confusion Matrix.</li>
+                    <li>Trained a CNN on 60,000 labelled eye images using TensorFlow and Keras.</li>
+                    <li>Cleaned data by gray-scaling and resizing images and using a train, test, and validation set.</li>
+                    <li>Created a multi-layered model using convolutional, maxpooling, and flattening dense layers.</li>
+                </ul>
+                <a href="myopia.html" class="project-button">
+                    View Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-media">
+                <img src="images/projects/Myopia/cm.png">
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-text">
+                <h1>Arduino Robotic Arm</h1>
+                <ul>
+                    <li>Created a four-jointed robotic arm capable of grabbing small and lightweight objects.</li>
+                    <li>Modeled and 3D printed a custom base, joints, and claw grabber that house all the electronics
+                    </li>
+                    <li>Controlled servos using potentiometers and analog signals using the Arduino IDE.</li>
+                    <li>Learned about analog and PWM signals, mapped analog input values to servo angles, and managed
+                        power requirements for multiple servos</li>
+                </ul>
+                <a href="arm.html" class="project-button">
+                    View Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-media">
+                <img src="images/projects/Arduino Arm/coverimg.JPG" alt="Arduino Arm">
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-text">
+                <h1>Endless Fish Siwmmer</h1>
+                <ul>
+                    <li>Arcade style minigame where you control a fish and avoid obstacles.</li>
+                    <li>Incorporates live camera control with OpenCV and MediaPipe landmarks.</li>
+                    <li>Includes score tracking, animations, high score saving, and a home screen.</li>
+                </ul>
+                <a href="fish.html" class="project-button">
+                    View Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-media">
+                <video autoplay muted loop>
+                    <source src="images/projects/fish/fish.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <hr class=divider style="margin-top: 5%;">
+        <div style="text-align: center;">
+            <p class="title"><strong>Works in Progress</strong></p>
+
+            <p class="Welcome">
+                A preview of projects that I'm currently working on.
+            </p>
+        </div>
+        <div class="project">
+            <div class="project-text">
+                <h1>Cartesian Pen Plotter</h1>
+                <ul>
+                    <li>Designing a DIY pen plotter inspired by my fasication of 3D printers.</li>
+                    <li>Uses Nema-17 stepper motors, A4988 stepper drivers, a micro servo, and ESP32.</li>
+                    <li>Supports a A x B drawing space utilizing x4 300mm linear rods, linear bearings, GT2 timing belts, and GT2 pulleys.</li>
+                    <li>Implements a rack & pinion pen mechanism for Z-axis control.</li>
+                    <li>Currently finalizing pen carriage and starting on GCode instructions in communication with ESP32.</li>
+                </ul>
+            </div>
+            <div class="project-media">
+                <img src="images/projects/plotter.png">
+            </div>
+        </div>
+        <br>
+    <!-- </section> -->
+</body>
+</html>

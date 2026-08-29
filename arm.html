@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="arm.css"> -->
+    <link rel="stylesheet" href="creations.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--import Poppins font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Arduino Robotic Arm</title>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">4-DOF Arduino Robotic Arm</h1>
+            <p class="hero-subtitle">
+                A four-degree-of-freedom robotic arm with custom 3D-printed components, Arduino control system, and interactive potentiometer interface
+            </p>
+            <div class="tech-stack">
+                <span class="tech-badge">Arduino IDE</span>
+                <span class="tech-badge">Fusion 360</span>
+                <span class="tech-badge">C/C++</span>
+                <span class="tech-badge">3D Printing</span>
+                <span class="tech-badge">Servo Control</span>
+                <span class="tech-badge">PWM Signals</span>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Project Genesis</h2>
+            <p class="content-text">
+                This project originated from a ninth-grade engineering research assignment where I built a simple grabber mechanism for a mobility aid. That initial experience with servo motors sparked my interest in more complex robotic systems. After acquiring a 3D printer and learning CAD software, I revisited the concept with ambitions to create a fully articulated robotic arm.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/IRP_design.png" alt="Original IRP Design">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/IRP_prototype.png" alt="IRP Prototype">
+                </div>
+            </div>
+            <p class="content-text">
+                The project spanned nearly a year, with concentrated work during weekends throughout the school year. This extended timeline allowed for thorough learning, multiple design iterations, and refinement of both mechanical and electronic systems.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Mechanical Design Challenges</h2>
+            <p class="content-text">
+                Designing the arm's mechanical structure required balancing multiple factors: servo torque limitations, 3D print strength, weight distribution, and range of motion. Each joint needed custom housing that accommodated the servo while maintaining structural integrity under load.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/arm_iterations.JPG" alt="Design Iterations">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/arm_prototype.JPG" alt="Early Prototype">
+                </div>
+            </div>
+            <p class="content-text">
+                The servo bracket alone required a month of iterations to perfect. I learned crucial lessons about 3D printer tolerances, infill density optimization, and how material properties affect functional parts. Each prototype brought improvements in fit, finish, and functionality.
+            </p>
+            <div class="image-grid-three">
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/arm_bracket.JPG" alt="Servo Bracket">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/arm_bracket_servo.JPG" alt="Bracket with Servo">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/arm_bracket_servo2.JPG" alt="Assembled Bracket">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Claw Mechanism Development</h2>
+            <p class="content-text">
+                The gripper design proved particularly challenging. I opted for a scissor-style mechanism driven by two gears, offering simplicity while providing adequate gripping force. Multiple iterations addressed gear tooth tolerance, thread strength, optimal infill density, and grip surface texture.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/claw.JPG" alt="Completed Claw Mechanism">
+                </div>
+                <div class="image-container">
+                    <video muted controls>
+                        <source src="images/projects/Arduino Arm/claw_video.MOV" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <p class="content-text">
+                While the final design successfully grips small, lightweight objects, the experience taught valuable lessons about mechanical advantage, gear ratios, and the trade-offs between complexity and reliability in mechanical systems.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Assembly & Electronics Integration</h2>
+            <p class="content-text">
+                The first working prototype demonstrated the mechanical design's viability but revealed the need for a more robust base. The original platform couldn't support the arm's weight and range of motion, leading to a redesign that incorporated the electronics housing into a stable foundation.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/working_design.JPG" alt="Working Prototype">
+                </div>
+                <div class="image-container">
+                    <video muted controls>
+                        <source src="images/projects/Arduino Arm/arm_video.MOV" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <p class="content-text">
+                Programming the Arduino control system proved more forgiving than anticipated, though I did learn an expensive lesson about proper pin configuration after accidentally damaging two servos by reversing analog and digital connections. The final system uses four potentiometers for intuitive real-time control of each joint.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">CAD Models & Final Design</h2>
+            <p class="content-text">
+                All components were meticulously modeled in Fusion 360, allowing for precise dimensional control and visualization before printing. The blue and white color scheme provides a professional appearance while clearly distinguishing structural components.
+            </p>
+            <div class="image-grid-three">
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/cad_bracket.png" alt="CAD Bracket Model">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/cad_claw.png" alt="CAD Claw Model">
+                </div>
+                <div class="image-container">
+                    <img src="images/projects/Arduino Arm/cad_base.png" alt="CAD Base Model">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Completed Project</h2>
+            <img src="images/projects/Arduino Arm/coverimg.JPG" alt="Completed Robotic Arm" class="full-width-image"  style="width: 80%; margin-left: 10%;">
+            <p class="content-text">
+                The finished arm features four degrees of freedom with smooth servo control, a functional gripper capable of manipulating lightweight objects, and an integrated base housing all electronics. While limitations exist in lifting capacity and precision, the project successfully demonstrates core robotics concepts and represents significant growth in my engineering capabilities.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Technical Knowledge Gained</h2>
+            <div class="highlights-box">
+                <ul class="highlights-list">
+                    <li>Servo motor control using PWM signals and analog input mapping</li>
+                    <li>Power management for multiple actuators including capacitor smoothing</li>
+                    <li>Circuit design fundamentals: voltage vs. current, Ohm's law, resistor values</li>
+                    <li>Multimeter usage for debugging connections and measuring electrical properties</li>
+                    <li>CAD modeling with attention to tolerances, infill strategies, and print orientation</li>
+                    <li>Arduino IDE programming and C++ syntax for embedded systems</li>
+                    <li>Iterative design methodology and prototyping workflows</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Future Improvements</h2>
+            <p class="content-text">
+                Reflecting on this project with additional experience reveals numerous enhancement opportunities. Stronger servos would dramatically improve payload capacity. A different gripper design—perhaps with compliant mechanisms or parallel jaw configuration—could handle a wider variety of objects.
+            </p>
+            <p class="content-text">
+                Most excitingly, implementing inverse kinematics would enable coordinate-based positioning rather than individual joint control. Paired with computer vision for object detection and tracking, the arm could autonomously identify and manipulate targets. Upgrading from Arduino Uno to an ESP32 would add wireless control capabilities and significantly more processing power for these advanced features.
+            </p>
+        </section>
+
+        <div class="button-container">
+            <a href="projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+        </div>
+    </div>
+</body>
+</html>

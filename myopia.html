@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="creations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--import Poppins font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Detecting Myopia with Machine Learning</title>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">Detecting Myopia with LR and CNN Models</h1>
+            <p class="hero-subtitle">
+                Using a Logistic Regression Model and a Convolutional Neural Network to detect the onset of adolescent myopia
+            </p>
+            <div class="tech-stack">
+                <span class="tech-badge">Machine Learning</span>
+                <span class="tech-badge">AI</span>
+                <span class="tech-badge">IB Extended Essay</span>
+                <span class="tech-badge">Adolescent Myopia</span>
+                <span class="tech-badge">Sigmoid Function</span>
+                <span class="tech-badge">Adam Optimizer</span>
+                <span class="tech-badge">Train/Test Split</span>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="content-text">
+                This project was the topic for my IB Extended Essay on Computer Science, where I spent my junior and senior years researching myopia and AI, creating the models, and writing the 4,000 words under the supervision and mentorship of my IB CS teacher.
+            <p class="content-text">
+                The project explores the tradeoffs between the two models and analyzes their effectiveness in the context of medical diagnosis for quick and accurate predictions.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Research & Topic Choice</h2>
+            <p class="content-text">
+                Having been diagnosed with myopia as early as 5th grade, this topic has a personal relevance and meaning to me. Requiring special Orthokeratology (Ortho-k) lenses at night to maintain my level of vision, I feel compelled to
+                explore the future of myopia and how it affects adolescents. Already having conducted research into myopia as a research project in my 10th grade Chemistry class, I sought to further my understanding of the disease and understand
+                how my knowledge of AI and machine learning could play a role in addressing the growing number of those afffected.
+            </p>
+            <p class="content-text">
+                After finalizing my EE topic back in October, I began researching existing studies, cases, and analyses that were already implementing AI diagnosis for myopia with a variety of machine learning models. For my investigation, I
+                chose to compare and evaluate the tradeoffs between a Logistic Regression model and a Convolutional Neural Network (CNN) on the basis of accuracy and interpretability. For the remainder of junior year, I created both models, started writing,
+                and continued writing my EE, polishing it throughout the summer.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">The Baseline Model: Logistic Regression</h2>
+            <p class="content-text">
+                I first established a baseline model with Logistic Regression using dataset from Kaggle derived from the established Mendelson study. The dataset The dataset contained few images, requiring data augmentation to train the model on a larger amount of fundus scans.
+            <div class="image-grid">
+                <div class="image-container" style="width: 70%; margin: auto;">
+                    <img src="images/projects/Myopia/cm.png">
+                </div>
+            </div>
+            <p class="content-text">
+                The model uses 4 feature variables, measurements of the eye that have strong correlation to myopic development. To counteract the imbalanced number of non-myopic to myopic patients, I used the balanced weights algorithm to penalize model learning on non-myopic patients more harshly than myopic.
+                With the 4 feature variables and the balanced class weights algorithm, the model achieved an accuracy of 83.33%. Due the imbalanced classes, the precision, recall, and F1 scores were low.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">The CNN Model</h2>
+            <p class="content-text">
+                After creating a baseline model for myopia diagnosis, I decided to train a CNN model on 2,000 retinal scans. The Sequential model starts with a Rescaling layer and uses repeating blocks of Conv2D, BatchNormalization, MaxPooling2D, and Dropout layers. The outputs are then fed into a Flatten, Dense, and Dropout layers before being input into the final Dense layer.
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/projects/Myopia/CNN_visual.png" style="margin: auto; width:100%; height:auto;">
+                </div>
+            </div>
+            <p class="content-text">
+                I trained the model in batches of 64 for 10 epochs, maintaining the original 224x224 pixel dimensions of the retinal scans. The learning rate was also lowered to 0.0001 to avoid exploding gradients and losses.
+            </p>
+            <div class="image-container" style="width: 80%; margin: auto;">
+                <pre><code style="font-family: Courier New, monospace; font-size: 0.9rem;">
+                    model = tf.keras.models.Sequential([
+                        tf.keras.layers.Input(shape=(img_height, img_width, 3)),
+
+                        tf.keras.layers.RandomFlip("horizontal"),
+                        tf.keras.layers.RandomRotation(0.1),
+                        tf.keras.layers.RandomZoom(0.1),
+
+                        tf.keras.layers.Rescaling(1./255),
+
+                        tf.keras.layers.Conv2D(32, (3,3), activation="relu"),
+                        tf.keras.layers.BatchNormalization(),  
+                        tf.keras.layers.MaxPooling2D(),
+
+                        tf.keras.layers.Conv2D(64, (3,3), activation="relu"),
+                        tf.keras.layers.BatchNormalization(),
+                        tf.keras.layers.MaxPooling2D(),
+
+                        tf.keras.layers.Conv2D(128, (3,3), activation="relu"),
+                        tf.keras.layers.BatchNormalization(),
+                        tf.keras.layers.MaxPooling2D(),
+                        tf.keras.layers.Dropout(0.1),
+
+                        tf.keras.layers.Conv2D(256, (3,3), activation="relu"),
+                        tf.keras.layers.BatchNormalization(),
+                        tf.keras.layers.MaxPooling2D(),
+                        tf.keras.layers.Dropout(0.1),
+                        
+                        tf.keras.layers.GlobalAveragePooling2D(),
+                        tf.keras.layers.Dense(64, activation="relu"),
+                        tf.keras.layers.Dropout(0.2),
+
+                        tf.keras.layers.Dense(1, activation="sigmoid")
+                    ])
+                </code></pre>         
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">EE Content</h2>
+            <p class="content-text">
+                Discussing the model's architecture throughout my essay, I concluded with evaluating the tradeoffs between the Logistic Regression model and the CNN. In the context of the growing number of myopic people, both models serve an importance in AI predictions paired with human diagnosis.
+            </p>
+            <p class="content-text">
+                After finishing both models' architecture, all I had left to do was wrap up the essay, including all the data, code snippets, and graphics as well as internal citations and works cited.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Final Submission</h2>
+            <p class="content-text">
+                This project served as an opportunity to expand my knowledge of myopia while applying my AI skills. In developing two models and analyzing their performances, I've learned a lot of about data processing, data analysis, and model architecture.
+            </p>
+            <p class="content-text">
+                I will be submitting my IB CS EE in my senior year after further revisions under the guidance of my IB English teacher and EE supervisor.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Key Learnings</h2>
+            <div class="highlights-box">
+                <ul class="highlights-list">
+                    <li>Gained a real-world understanding of myopia, its growing concern, and the current status of AI medical diagnosis</li>
+                    <li>Identified the main tradeoffs in medical AI and explored the current state of AI diagnosis</li>
+                    <li>Managed, processed, and analyzed patient data and retinal scans</li>
+                    <li>Learned precision, recall, F1 score metrics, balanced class weight algorithm, binary crossentropy loss function, Adam optimizer, sigmoid and ReLU activation functions</li>
+                    <li>Improved understanding of model architecture and Conv2D, BatchNormalization, MaxPooling2D, and Dropout layers </li>
+                    <li>Interpreted and analyzed model performance with Confusion Matrices, graphs, and additional metrics</li>
+                    <li>Practiced proper research and academic writing, and critical thinking skills through a self-directed research paper  </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Future Enhancements</h2>
+            <p class="content-text">
+                This project served as an introductory application of my AI knowledge while exploring more about the optical disease expected to affect ~50% of the world's population by 2050. If given more time to explore each model, I would have liked to test more balanced datasets, look into Grad-CAM for the CNN, measure additional metrics, and include more layers to create a more sophisticated CNN model. Additionally, I would like to learn about other CNN models aside from Sequential and maybe create additional models to compare and contrast from.
+            </p>
+        </section>
+
+        <div class="button-container">
+            <a href="projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+        </div>
+    </div>
+</body>
+</html>
