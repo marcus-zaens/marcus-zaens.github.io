@@ -80,7 +80,7 @@
                 I trained the model in batches of 64 for 10 epochs, maintaining the original 224x224 pixel dimensions of the retinal scans. The learning rate was also lowered to 0.0001 to avoid exploding gradients and losses.
             </p>
             <div class="image-container" style="width: 80%; margin: auto;">
-                <pre><code style="font-family: Courier New, monospace; font-size: 0.9rem;">
+                <pre><code>
                     model = tf.keras.models.Sequential([
                         tf.keras.layers.Input(shape=(img_height, img_width, 3)),
 

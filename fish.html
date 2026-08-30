@@ -52,14 +52,6 @@
             <h2 class="section-title">MediaPipe Face Tracking</h2>
             <p class="content-text">
                 After setting up both windows, I moved onto actually marking and tracking the player's nose. I decided to use MediaPipe's Face Mesh and keep the default parameters. Isolating just the nose feature, I denoted its location with a red circle.
-            <div class="image-grid">
-                <div class="image-container">
-                    <img src="images/projects/Keyboard/qmk.png" alt="QMK Configuration">
-                </div>
-                <div class="image-container">
-                    <img src="images/projects/Keyboard/VIA.png" alt="VIA Interface">
-                </div>
-            </div>
             <p class="content-text">
                 After locating the player's nose from the camera feed, I set a simple square to move to one of the three lanes in the PyGame window. I roughly divided the screen height by 3 and set y-coordinates for each lane. Once it worked, I started working on the main game loop and sprite designs.
             </p>
@@ -83,7 +75,7 @@
                 To detect the collision between the player and obstacles, I created a list containing of all obstacles/sprites I would be using. If there were any collision, I pushed the obstacle back for the player to move, set an invincibility period for the player, and also reduced the number of the player's lives.
             </p>
             <div class="image-container">
-                <pre><code style="font-family: Courier New, monospace; font-size: 0.9rem;">
+                <pre><code>
                     obstacles = [fishing_rod_rect, jellyfish_rect, shark_rect]
                     def check_collision():
                         global invincible, invincible_duration, last_hit_time, num_lives
@@ -115,7 +107,7 @@
                 After the obstacles drifted off screen, I needed to ensure that spawning them in always left an open path for the player to take. I would also need to ensure that this path was always available as the difficulty increaeses.
             </p>
             <div class="image-container">
-                <pre><code style="font-family: Courier New, monospace; font-size: 0.9rem;">
+                <pre><code>
                     def spawn():
                         global min_respawn, max_respawn
                         global fishing_rod_float_x, jellyfish_float_x, shark_float_x
@@ -159,7 +151,7 @@
                 As the player survives longer, I used logarithms, minimums and maximums to scale the obstacles' speeds, leaving the player with less and less reaction time. Additionally, the spacing between obstacles become smaller, leaving the player less room to switch lanes.
             </p>
             <div class="image-container">
-                <pre><code style="font-family: Courier New, monospace; font-size: 0.9rem;">
+                <pre><code>
                     def difficulty_scaling():
                         global fishing_rod_rect_scroll_speed, jellyfish_rect_scroll_speed, shark_rect_scroll_speed, background_scroll_speed
                         global min_respawn, max_respawn
