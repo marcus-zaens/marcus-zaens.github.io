@@ -53,16 +53,31 @@ a:visited {
 
 .body {
     width: 90%;
-    font-size: 20px;
+    font-size: clamp(1.3rem, 1vw, 4rem);
     line-height: 1.8;
 }
 
+@media (max-width: 900px) {
+    .welcome-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 30px;
+    }
+    .text-container {
+        align-items: left;
+        text-align: left;
+    }
+    .pfp-container {
+        order: -1;
+    }
+}
 .welcome-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    transform: translateX(5%);
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .text-container {
@@ -70,7 +85,8 @@ a:visited {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 50%;
+    flex: 1 1 380px;
+    width: 90%;
 }
 
 .welcome {
@@ -78,18 +94,19 @@ a:visited {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: clamp(4rem, 6.5rem, 7rem);
+    font-size: clamp(4rem, 6vw, 7rem);
     text-align: left;
     margin-top: 0;
     margin-bottom: 0;
     width: 100%;
+    overflow-wrap: break-word;
 
 }
 
 .intro {
     font-family: Poppins;
     color: white;
-    font-size: 25px;
+    font-size: clamp(1.5rem, 1vw, 4rem);
     text-align: left;
     width: 100%;
 }
@@ -102,14 +119,16 @@ a:visited {
     color: white;
     font-size: 18px;
     text-decoration: none;
-    margin-left: 8%;
+    margin-left: 5%;
 }
 
 .contact:hover{
     color: rgb(39, 158, 255);
+    transition: 0.15s;
 }
 
 .pfp-container {
+    flex: 1 1 260px;
     width: 50%;
     display: flex;
     justify-content: center;
@@ -117,11 +136,12 @@ a:visited {
 }
 
 .profile-img {
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    max-width: 400px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
+    margin-left: 10%;
 }
 .skills-grid {
     display: grid;
@@ -317,6 +337,7 @@ h1 {
     transform: scale(0.95);
     opacity: 0.9;
 }
+
 /*about*/
 body {
     background-color: rgb(30, 30, 30);
@@ -328,11 +349,26 @@ body {
     width: 80%;
     margin: 0 auto;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .resume_img {
+    flex: 1 1 320px;
+    min-width: 260px;
     width: 45%;
     height: auto;
     border-radius: 12px;
     border: 1px solid rgba(39, 158, 255, 0.2);
+}
+
+@media (max-width:300px) {
+    .resume-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 90%;
+    }
+    .resume-img {
+        width: 100%;
+    }
 }
